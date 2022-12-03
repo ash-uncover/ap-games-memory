@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 // Store
 import GameSlice from 'store/game/game.slice'
 // Libs
-import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
+import { ShortcutManager, Shortcuts } from '@uncover/games-common'
 // Components
 import HomeMenu from '../HomeMenu'
 import { GameDifficulties } from 'lib/game/constants'

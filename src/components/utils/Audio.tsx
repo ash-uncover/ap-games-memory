@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import AudioManager from 'lib/utils/AudioManager'
+import AudioManager from 'lib/utils/Audio'
 import AudioSelectors from 'store/audio/audio.selectors'
 
 const Audio = () => {

@@ -1,7 +1,8 @@
 import React, { MouseEvent } from 'react'
-import AudioManager, { AudioFiles, AudioTypes } from 'lib/utils/AudioManager'
+import AudioManager, { AudioFiles } from 'lib/utils/Audio'
 
 import './HomeMenuItem.css'
+import { AudioTypes } from '@uncover/games-common'
 
 export interface HomeMenuItemProperties {
   selected?: boolean

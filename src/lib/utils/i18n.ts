@@ -3,7 +3,6 @@ import { initReactI18next } from 'react-i18next'
 
 import LanguageDetector from 'i18next-browser-languagedetector'
 import ChainedBackend from 'i18next-chained-backend'
-import resourcesToBackend from 'i18next-resources-to-backend'
 import HttpBackend from 'i18next-http-backend'
 
 i18n

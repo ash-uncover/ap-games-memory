@@ -5,12 +5,13 @@ import { Navigate } from 'react-router-dom'
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Libs
-import AudioManager, { AudioFiles, AudioTypes } from 'lib/utils/AudioManager'
+import AudioManager, { AudioFiles } from 'lib/utils/Audio'
 import { GameStatuses } from 'lib/game/constants'
 // Components
 import Board from 'components/game/board/Board'
 
 import './Game.css'
+import { AudioTypes } from '@uncover/games-common'
 
 const Game = ({ }) => {
 

@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect } from 'react'
+import { AudioTypes, ShortcutManager, Shortcuts } from '@uncover/games-common'
 // Libs
-import AudioManager, { AudioFiles, AudioTypes } from 'lib/utils/AudioManager'
-import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
+import AudioManager, { AudioFiles } from 'lib/utils/Audio'
 
 import './Home.css'
 

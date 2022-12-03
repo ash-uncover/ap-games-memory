@@ -3,7 +3,6 @@ import {
   createSlice,
   PayloadAction
 } from '@reduxjs/toolkit'
-import { normalizeVolumeValue } from 'lib/utils/AudioManager'
 
 import Language from 'lib/utils/language'
 

@@ -4,7 +4,7 @@ import {
   PayloadAction
 } from '@reduxjs/toolkit'
 
-import { normalizeVolumeValue } from 'lib/utils/AudioManager'
+import { normalizeVolumeValue } from '@uncover/games-common'
 
 import { AudioState } from './audio.state'
 
