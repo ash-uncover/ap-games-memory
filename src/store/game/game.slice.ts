@@ -21,14 +21,15 @@ import {
 
 import { Cards } from 'lib/data/Data'
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
+import { Card } from 'lib/data/card.helper'
 
 // STATE //
 
 const initialState: GameState = {
   status: GameStatuses.GAME_NOT_STARTED,
   difficulty: GameDifficulties.EASY,
-  startTime: null,
-  endTime: null,
+  startTime: 0,
+  endTime: 0,
 
   errors: 0,
   revealed: 0,
@@ -48,11 +49,11 @@ const startGame: CaseReducer<GameState, PayloadAction<StartGamePayload>> = (stat
   } = action.payload
 
   const nbCards = 8
-  const allCards = Object.values(Cards)
-  const baseCards = ArrayUtils.randomSubArray(allCards, nbCards)
-  const chosenCards = ArrayUtils.shuffle([].concat(baseCards).concat(baseCards))
+  const allCards: Card[] = Object.values(Cards)
+  const baseCards: Card[] = ArrayUtils.randomSubArray<Card>(allCards, nbCards)
+  const chosenCards: Card[] = ArrayUtils.shuffle<Card>([...baseCards, ...baseCards])
 
-  chosenCards.forEach((card) => {
+  chosenCards.forEach((card: Card) => {
     const tile: GameBoardTile = {
       id: `tile-${UUID.next()}`,
       card: card.id,

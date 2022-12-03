@@ -1,8 +1,9 @@
 import Logger from '@uncover/js-utils-logger'
 const LOGGER = new Logger('CONFIG')
 
-// Default hard-coded values
-const CONFIG = {
+const CONFIG: {
+  [key: string]: string
+} = {
   AP_GAMES_MEMORY_PUBLIC: ''
 }
 
@@ -17,7 +18,8 @@ try {
 }
 
 console.log('CONFIG')
-Object.keys(CONFIG).forEach((confKey) => {
+
+Object.keys(CONFIG).forEach((confKey: string) => {
   console.log(` - ${confKey}: '${CONFIG[confKey]}'`)
 })
 
