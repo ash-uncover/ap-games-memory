@@ -1,5 +1,5 @@
 {
-  "name": "ap-games-memory",
+  "name": "@uncover/games-memory",
   "version": "0.0.1",
   "scripts": {
     "build": "webpack",
@@ -7,6 +7,7 @@
     "start": "webpack serve --progress --mode development"
   },
   "dependencies": {
+    "@uncover/games-common": "ash-uncover/ap-games-common",
     "@uncover/js-utils": "^0.0.10",
     "@uncover/js-utils-fetch": "^0.0.2",
     "@uncover/js-utils-logger": "^0.1.3",

@@ -42,7 +42,7 @@ const HomeMain = () => {
 
   return (
     <HomeMenu
-      title='AP World'
+      title='AP Memory'
       items={[
         { text: 'New', onClick: handleNew },
         { text: 'Settings', onClick: handleSettings },

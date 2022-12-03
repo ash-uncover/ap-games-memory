@@ -1,7 +1,7 @@
+import { loadData } from 'lib/data/Data'
 import React, { useEffect, ReactElement } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AppSelectors from 'store/app/app.selectors'
-import * as DataManager from 'lib/data/DataManager'
 import AppSlice from 'store/app/app.slice'
 
 interface AppProperties {
@@ -18,7 +18,7 @@ const App = ({
   const loaded = useSelector(AppSelectors.loaded)
 
   useEffect(() => {
-    DataManager.loadData()
+    loadData()
       .then(() => dispatch(AppSlice.actions.setLoaded(true)))
   }, [])
 
