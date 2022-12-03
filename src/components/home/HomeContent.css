@@ -1,0 +1,9 @@
+.home-content {
+  position: absolute;
+  top: 0;
+  left: var(--home-menu-width);
+  right: 0;
+  bottom: 0;
+
+  padding: 5rem;
+}

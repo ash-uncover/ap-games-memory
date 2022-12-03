@@ -1,0 +1,14 @@
+.home-menu-item {
+  cursor: pointer;
+  transition: color 0.25s;
+  margin: 1rem 0;
+  font-size: 1.25rem;
+
+  &:hover {
+    color: var(--text-hightlight-color);
+  }
+
+  &.selected {
+    color: var(--text-hightlight-color);
+  }
+}

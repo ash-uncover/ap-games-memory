@@ -1,0 +1,15 @@
+.home-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--home-menu-width);
+
+  padding: 5rem 2rem;
+
+  & .home-menu__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}

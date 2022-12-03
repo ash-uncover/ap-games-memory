@@ -1,0 +1,26 @@
+:root {
+  --home-menu-width: 10rem;
+  --text-color: lightgrey;
+  --text-hightlight-color: white;
+}
+
+.home {
+  color: var(--text-color);
+
+  & .layer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &.layer-background {
+      background: url('images/background.jpg');
+      background-size: cover;
+    }
+
+    &.layer-opacity {
+      background: rgba(30,30,30,0.7);
+    }
+  }
+}
