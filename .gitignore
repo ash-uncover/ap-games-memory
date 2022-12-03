@@ -6,7 +6,6 @@ npm-debug.log
 dist
 node_modules
 config.json
-docs
 
 # test coverage info
 test/__coverage__
