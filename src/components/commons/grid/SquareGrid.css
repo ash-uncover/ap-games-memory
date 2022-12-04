@@ -6,13 +6,24 @@
   align-items: center;
   justify-content: center;
 
-  container-type: inline-size;
-  container-name: sidebar;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  &.square-grid-h {
+    & .square-grid-inner {
+      height: 100%;
+    }
+  }
+  &.square-grid-v {
+    & .square-grid-inner {
+      width: 100%;
+    }
+  }
 
   & .square-grid-inner {
     position: relative;
     aspect-ratio: 1;
-    margin: 2rem;
+
 
     & .square-grid-table {
       position: absolute;
@@ -25,6 +36,7 @@
         & .square-grid-table-row {
           & .square-grid-table-cell {
             padding: 0;
+            aspect-ratio: 1;
           }
         }
       }

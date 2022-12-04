@@ -31,11 +31,11 @@ const SquareGrid = ({
 
   const updateSize = () => {
     if (container!.current!.clientWidth > container!.current!.clientHeight) {
-      innerContainer!.current!.style.height = '100%'
-      innerContainer!.current!.style.width = 'auto'
+      container!.current!.classList.add('square-grid-h')
+      container!.current!.classList.remove('square-grid-v')
     } else {
-      innerContainer!.current!.style.height = 'auto'
-      innerContainer!.current!.style.width = '100%'
+      container!.current!.classList.remove('square-grid-h')
+      container!.current!.classList.add('square-grid-v')
     }
     const containerRatio = innerContainer!.current!.clientWidth / innerContainer!.current!.clientHeight
     const nbItems = children.length
