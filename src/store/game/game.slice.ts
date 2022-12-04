@@ -19,7 +19,7 @@ import {
   GameStatuses
 } from 'lib/game/constants'
 
-import { Cards } from 'lib/data/Data'
+import { Cards } from 'lib/data'
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 import { Card } from 'lib/data/card.helper'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 // Libs
 import CONFIG from 'config'
-import { Cards } from 'lib/data/Data'
+import { Cards } from 'lib/data'
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 
 import './Tile.css'

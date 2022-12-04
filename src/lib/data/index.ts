@@ -6,10 +6,10 @@ import { Card, CardsData } from './card.helper'
 
 export const Cards: { [key: string]: Card } = {}
 
-const Data = new DataManager(`${CONFIG.AP_GAMES_MEMORY_PUBLIC}`)
+const Data = new DataManager(`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/data/`)
 
 export const loadCardsData = async () => {
-  const cards = await Data.load<CardsData>('/data/cards.json')
+  const cards = await Data.load<CardsData>('cards.json')
   cards.cards.forEach((card: Card) => {
     Cards[card.id] = card
   })

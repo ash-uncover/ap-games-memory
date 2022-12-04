@@ -1,8 +1,10 @@
-import { loadData } from 'lib/data/Data'
 import React, { useEffect, ReactElement } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+// Store
 import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
+// Libs
+import { loadData } from 'lib/data'
 
 interface AppProperties {
   children: ReactElement
