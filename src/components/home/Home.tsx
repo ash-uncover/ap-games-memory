@@ -27,7 +27,7 @@ const Home = ({
       priority: 1,
       shortcuts: []
     }
-    ShortcutManager.addShortcuts(shortcuts)
+    return ShortcutManager.addShortcuts(shortcuts)
   }, [])
 
   // Rendering //

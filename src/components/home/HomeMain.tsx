@@ -22,10 +22,7 @@ const HomeMain = () => {
         { code: 'KeyS', callback: handleSettings },
       ]
     }
-    ShortcutManager.addShortcuts(shortcuts)
-    return () => {
-      ShortcutManager.removeShortcuts('home-main-shortcuts')
-    }
+    return ShortcutManager.addShortcuts(shortcuts)
   })
 
   // Events //

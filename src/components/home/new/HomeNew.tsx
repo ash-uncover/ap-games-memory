@@ -27,10 +27,7 @@ const HomeNew = () => {
         { code: 'Escape', callback: handleBack },
       ]
     }
-    ShortcutManager.addShortcuts(shortcuts)
-    return () => {
-      ShortcutManager.removeShortcuts('home-new-shortcuts')
-    }
+    return ShortcutManager.addShortcuts(shortcuts)
   })
 
   // Events //
