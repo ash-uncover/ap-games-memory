@@ -13,6 +13,7 @@ const SquareGrid = ({
   // Hooks //
 
   const container = useRef<HTMLDivElement>(null)
+  const innerContainer = useRef<HTMLDivElement>(null)
 
   const [show, setShow] = useState(false)
   const [lines, setLines] = useState(1)
@@ -29,19 +30,24 @@ const SquareGrid = ({
   }, [])
 
   const updateSize = () => {
-    if (container && container.current) {
-      const containerRatio = container.current.clientWidth / container.current.clientHeight
-      const nbItems = children.length
-      let lines = 1
-      let currentRatio = (nbItems / lines) / lines
-      while (currentRatio > containerRatio) {
-        lines += 1
-        currentRatio = (nbItems / lines) / lines
-      }
-      setLines(lines)
-      setLineItems(Math.ceil(nbItems / lines))
-      setShow(true)
+    if (container!.current!.clientWidth > container!.current!.clientHeight) {
+      innerContainer!.current!.style.height = '100%'
+      innerContainer!.current!.style.width = 'auto'
+    } else {
+      innerContainer!.current!.style.height = 'auto'
+      innerContainer!.current!.style.width = '100%'
     }
+    const containerRatio = innerContainer!.current!.clientWidth / innerContainer!.current!.clientHeight
+    const nbItems = children.length
+    let lines = 1
+    let currentRatio = (nbItems / lines) / lines
+    while (currentRatio > containerRatio) {
+      lines += 1
+      currentRatio = (nbItems / lines) / lines
+    }
+    setLines(lines)
+    setLineItems(Math.ceil(nbItems / lines))
+    setShow(true)
   }
 
   // Events //
@@ -88,11 +94,12 @@ const SquareGrid = ({
 
   return (
     <div
+      ref={container}
       className='square-grid'
     >
       <div
-        ref={container}
-        className='square-grid-container'
+        ref={innerContainer}
+        className='square-grid-inner'
       >
         {show ?
           <table

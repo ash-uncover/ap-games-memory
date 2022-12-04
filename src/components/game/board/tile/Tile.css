@@ -16,22 +16,47 @@
 
   & .tile-mask {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background: grey;
-    transition: transform 0.25s ease-in;
-  }
-
-  &.tile-revealed {
-    & .tile-mask {
-      transform: translateY(-100%);
+    transition: transform 0.25s ease-in-out;
+    &.tile-mask-top {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+    }
+    &.tile-mask-bottom {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+    }
+    &.tile-mask-left {
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+    }
+    &.tile-mask-right {
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
     }
   }
-  &.tile-found {
-    & .tile-mask {
-      display: none;
+
+  &.tile-found,
+  &.tile-revealed {
+    & .tile-mask-top {
+      transform: translateY(-100%);
+    }
+    & .tile-mask-bottom {
+      transform: translateY(100%);
+    }
+    & .tile-mask-left {
+      transform: translateX(-100%);
+    }
+    & .tile-mask-right {
+      transform: translateX(100%);
     }
   }
 }

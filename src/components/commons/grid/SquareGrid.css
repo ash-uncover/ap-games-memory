@@ -9,10 +9,9 @@
   container-type: inline-size;
   container-name: sidebar;
 
-  & .square-grid-container {
+  & .square-grid-inner {
     position: relative;
-    padding-block-start: calc(100% - 4rem);
-    width: 100%;
+    aspect-ratio: 1;
     margin: 2rem;
 
     & .square-grid-table {
@@ -34,11 +33,5 @@
 
   & .square-grid-item {
     aspect-ratio: 1;
-  }
-}
-
-@container sidebar (max-aspect-ratio: 3/2)  {
-  .square-grid-container {
-    display: none;
   }
 }

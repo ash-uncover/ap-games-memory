@@ -49,7 +49,10 @@ const Tile = ({
         height='100%'
         src={`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/images/cards/${cardData.src}`}
       />
-      <div className='tile-mask' />
+      <div className='tile-mask tile-mask-top' />
+      <div className='tile-mask tile-mask-left' />
+      <div className='tile-mask tile-mask-right' />
+      <div className='tile-mask tile-mask-bottom' />
     </div>
   )
 }
