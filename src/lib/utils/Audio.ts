@@ -1,13 +1,13 @@
-import { AudioManager } from '@uncover/games-common'
 import CONFIG from 'config'
+import { AudioManager } from '@uncover/games-common'
 
 export const AudioFiles = {
-  home: '/sound/home.mp3',
-  game: '/sound/game.mp3',
-  menuChange: '/sound/menu_change.mp3',
-  step: '/sound/step.mp3',
+  home: 'home.mp3',
+  game: 'game.mp3',
+  menuChange: 'menu_change.mp3',
+  step: 'step.mp3',
 }
 
-export const Audio = new AudioManager(CONFIG.AP_GAMES_MEMORY_PUBLIC)
+export const Audio = new AudioManager(`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/`)
 
 export default Audio

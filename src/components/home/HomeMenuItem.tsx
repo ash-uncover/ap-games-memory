@@ -1,8 +1,9 @@
 import React, { MouseEvent } from 'react'
-import AudioManager, { AudioFiles } from 'lib/utils/Audio'
+// Libs
+import Audio, { AudioFiles } from 'lib/utils/Audio'
+import { AudioTypes } from '@uncover/games-common'
 
 import './HomeMenuItem.css'
-import { AudioTypes } from '@uncover/games-common'
 
 export interface HomeMenuItemProperties {
   selected?: boolean
@@ -20,7 +21,10 @@ export const HomeMenuItem = ({
 
   const handleClick = (event: MouseEvent) => {
     event.preventDefault()
-    AudioManager.play(AudioFiles.menuChange, AudioTypes.INTERFACE)
+    Audio.play(
+      AudioFiles.menuChange,
+      AudioTypes.INTERFACE
+    )
     onClick()
     return false
   }

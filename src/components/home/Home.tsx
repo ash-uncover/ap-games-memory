@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect } from 'react'
 import { AudioTypes, ShortcutManager, Shortcuts } from '@uncover/games-common'
 // Libs
-import AudioManager, { AudioFiles } from 'lib/utils/Audio'
+import Audio, { AudioFiles } from 'lib/utils/Audio'
 
 import './Home.css'
 
@@ -15,10 +15,10 @@ const Home = ({
   // Hooks //
 
   useEffect(() => {
-    AudioManager.play(AudioFiles.home, AudioTypes.MUSIC)
-    return () => {
-      AudioManager.stop(AudioFiles.home)
-    }
+    return Audio.play(
+      AudioFiles.home,
+      AudioTypes.MUSIC
+    )
   }, [])
 
   useEffect(() => {

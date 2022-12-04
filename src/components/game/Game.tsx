@@ -5,13 +5,14 @@ import { Navigate } from 'react-router-dom'
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Libs
-import AudioManager, { AudioFiles } from 'lib/utils/Audio'
+import Audio, { AudioFiles } from 'lib/utils/Audio'
 import { GameStatuses } from 'lib/game/constants'
 // Components
 import Board from 'components/game/board/Board'
+// Libs
+import { AudioTypes } from '@uncover/games-common'
 
 import './Game.css'
-import { AudioTypes } from '@uncover/games-common'
 
 const Game = ({ }) => {
 
@@ -25,10 +26,10 @@ const Game = ({ }) => {
   const revealed = useSelector(GameSelectors.revealed)
 
   useEffect(() => {
-    AudioManager.play(AudioFiles.game, AudioTypes.MUSIC)
-    return () => {
-      AudioManager.stop(AudioFiles.game)
-    }
+    return Audio.play(
+      AudioFiles.game,
+      AudioTypes.MUSIC
+    )
   }, [])
 
   useEffect(() => {
