@@ -40,12 +40,15 @@ module.exports = {
   ],
   devtool: 'source-map',
   devServer: {
+    compress: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    historyApiFallback: true,
+    port: 8082,
     static: {
       directory: path.join(__dirname, 'public'),
     },
-    compress: true,
-    port: 8080,
-    historyApiFallback: true,
   },
 
   module: {
