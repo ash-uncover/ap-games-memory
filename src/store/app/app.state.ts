@@ -5,6 +5,8 @@ interface AppState {
   dialog: string | null
   dialogParams: any | null
 
+  embedded: boolean
+
   language: string
 
   loaded: boolean

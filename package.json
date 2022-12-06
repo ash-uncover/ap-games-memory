@@ -5,14 +5,14 @@
     "build": "webpack",
     "build:docs": "npm i && webpack --config webpack.config.docs.js --mode production",
     "postinstall": "npm update @uncover/games-common",
-    "start": "webpack serve --progress --mode development"
+    "start": "npm i && webpack serve --progress --mode development"
   },
   "dependencies": {
     "@uncover/games-common": "ash-uncover/ap-games-common",
     "@uncover/js-utils": "^0.0.11",
     "@uncover/js-utils-fetch": "^0.0.3",
     "@uncover/js-utils-logger": "^0.1.4",
-    "i18next": "^22.0.6",
+    "i18next": "^22.0.7",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-chained-backend": "^4.0.1",
     "i18next-http-backend": "^2.0.2",

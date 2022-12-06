@@ -40,6 +40,9 @@ module.exports = {
   ],
   devtool: 'source-map',
   devServer: {
+    client: {
+      progress: false,
+    },
     compress: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
