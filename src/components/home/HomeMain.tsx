@@ -52,14 +52,18 @@ const HomeMain = () => {
 
   // Rendering //
 
+  const items = [
+    { text: 'New', onClick: handleNew },
+    { text: 'Settings', onClick: handleSettings },
+  ]
+  if (embedded) {
+    items.push({ text: 'Exit', onClick: handleExit },)
+  }
+
   return (
     <HomeMenu
       title='AP Memory'
-      items={[
-        { text: 'New', onClick: handleNew },
-        { text: 'Settings', onClick: handleSettings },
-        { text: 'Exit', onClick: handleExit },
-      ]}
+      items={items}
     />
   )
 }
