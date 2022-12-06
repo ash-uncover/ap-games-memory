@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 // Store
 import AppSelectors from 'store/app/app.selectors'
 // Services
-import MessageService from 'services/message.service'
+import MessageServiceCentral from 'services/message.service'
 // Libs
 import { ShortcutManager, Shortcuts } from '@uncover/games-common'
 // Components
@@ -44,7 +44,7 @@ const HomeMain = () => {
   }
 
   const handleExit = () => {
-    MessageService.sendMessage({
+    MessageServiceCentral.sendMessage({
       type: 'exitGame',
       payload: null
     })

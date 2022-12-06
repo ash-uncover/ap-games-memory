@@ -6,7 +6,7 @@ import AppSlice from 'store/app/app.slice'
 // Libs
 import { loadData } from 'lib/data'
 import { useLocation } from 'react-router-dom'
-import MessageService from 'services/message.service'
+import MessageServiceCentral from 'services/message.service'
 
 interface AppProperties {
   children: ReactElement
@@ -18,9 +18,6 @@ const App = ({
 
   // Hooks //
 
-  const location = useLocation()
-  console.log(location)
-
   const dispatch = useDispatch()
   const query = useQuery()
   const loaded = useSelector(AppSelectors.loaded)
@@ -29,7 +26,7 @@ const App = ({
     const embedded = query.has('embedded')
     if (embedded) {
       dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
-      return MessageService.init(dispatch)
+      return MessageServiceCentral.init(dispatch)
     }
   }, [])
 
