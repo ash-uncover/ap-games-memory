@@ -1,7 +1,7 @@
 {
   "id": "memory",
-  "name": "AP Memory",
+  "name": "Memory",
   "description": "A memory game",
-  "icon": "",
-  "thumbnail": ""
+  "icon": "/favicon.png",
+  "thumbnail": "/thumbnail.jpg"
 }
