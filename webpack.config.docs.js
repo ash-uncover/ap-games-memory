@@ -10,6 +10,12 @@ const DIR_NODE_MODULES = path.resolve(__dirname, 'node_modules')
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const transformPlugin = (buffer) => {
+  const plugin = JSON.parse(buffer.toString())
+  plugin.url = 'https://ash-uncover.github.io/ap-games-memory'
+  return JSON.stringify(plugin, null, 2)
+}
+
 module.exports = {
   entry: path.resolve(DIR_SRC, 'index_docs.tsx'),
 
@@ -30,6 +36,7 @@ module.exports = {
       patterns: [
         { from: path.resolve(__dirname, '_redirects'), to: '.' },
         { from: path.resolve(__dirname, 'public'), to: '.' },
+        { from: path.resolve(__dirname, 'plugin.json'), to: '.', transform: transformPlugin },
       ],
     }),
     new webpack.EnvironmentPlugin({

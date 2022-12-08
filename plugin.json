@@ -1,6 +1,7 @@
 {
   "id": "memory",
   "name": "Memory",
+  "url": "",
   "description": "A memory game",
   "icon": "/favicon.png",
   "thumbnail": "/thumbnail.jpg"

@@ -4,10 +4,17 @@ const path = require('path')
 
 const DIR_DIST = path.resolve(__dirname, 'dist')
 const DIR_SRC = path.resolve(__dirname, 'src')
+const DIR_PUBLIC = path.resolve(__dirname, 'public')
 const DIR_NODE_MODULES = path.resolve(__dirname, 'node_modules')
 
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const transformPlugin = (buffer) => {
+  const plugin = JSON.parse(buffer.toString())
+  plugin.url = 'http://localhost:8082'
+  return JSON.stringify(plugin, null, 2)
+}
 
 module.exports = {
   entry: path.resolve(DIR_SRC, 'index.tsx'),
@@ -35,6 +42,11 @@ module.exports = {
           from: path.resolve(__dirname, '_redirects'),
           to: '.',
         },
+        {
+          from: path.resolve(__dirname, 'plugin.json'),
+          to: '.',
+          transform: transformPlugin
+        },
       ],
     }),
   ],
@@ -50,7 +62,7 @@ module.exports = {
     historyApiFallback: true,
     port: 8082,
     static: {
-      directory: path.join(__dirname, 'public'),
+      directory: DIR_PUBLIC,
     },
   },
 
