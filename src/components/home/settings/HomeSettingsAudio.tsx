@@ -6,12 +6,14 @@ import AudioSelectors from 'store/audio/audio.selectors'
 // Components
 import { MenuStepInput } from 'components/commons/menu/MenuStepInput'
 import MenuCheckbox from 'components/commons/menu/MenuCheckbox'
+import { useDispatchMessage } from 'services/message.service'
 
 const HomeSettingsAudio = () => {
 
   // Hooks //
 
   const dispatch = useDispatch()
+  const dispatchMessage = useDispatchMessage(dispatch)
 
   const soundMaster = useSelector(AudioSelectors.master)
   const soundMasterVolume = useSelector(AudioSelectors.masterVolume)
@@ -25,31 +27,31 @@ const HomeSettingsAudio = () => {
   // Events //
 
   const handleMasterChange = (value: boolean) => {
-    dispatch(AudioSlice.actions.setMaster(value))
+    dispatchMessage(AudioSlice.actions.setMaster(value))
   }
   const handleMasterVolumeChange = (value: number) => {
-    dispatch(AudioSlice.actions.setMasterVolume(value))
+    dispatchMessage(AudioSlice.actions.setMasterVolume(value))
   }
 
   const handleGameChange = (value: boolean) => {
-    dispatch(AudioSlice.actions.setGame(value))
+    dispatchMessage(AudioSlice.actions.setGame(value))
   }
   const handleGameVolumeChange = (value: number) => {
-    dispatch(AudioSlice.actions.setGameVolume(value))
+    dispatchMessage(AudioSlice.actions.setGameVolume(value))
   }
 
   const handleInterfaceChange = (value: boolean) => {
-    dispatch(AudioSlice.actions.setInterface(value))
+    dispatchMessage(AudioSlice.actions.setInterface(value))
   }
   const handleInterfaceVolumeChange = (value: number) => {
-    dispatch(AudioSlice.actions.setInterfaceVolume(value))
+    dispatchMessage(AudioSlice.actions.setInterfaceVolume(value))
   }
 
   const handleMusicChange = (value: boolean) => {
-    dispatch(AudioSlice.actions.setMusic(value))
+    dispatchMessage(AudioSlice.actions.setMusic(value))
   }
   const handleMusicVolumeChange = (value: number) => {
-    dispatch(AudioSlice.actions.setMusicVolume(value))
+    dispatchMessage(AudioSlice.actions.setMusicVolume(value))
   }
 
   // Rendering //
