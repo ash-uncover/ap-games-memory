@@ -1,8 +1,15 @@
 {
-  "id": "memory",
-  "name": "Memory",
+  "name": "memory",
   "url": "https://ash-uncover.github.io/ap-games-memory",
-  "description": "A memory game",
-  "icon": "/favicon.png",
-  "thumbnail": "/thumbnail.jpg"
+  "provides": {
+    "game": {
+      "url": "",
+      "type": "iframe",
+      "properties": {
+        "name": "Memory",
+        "description": "A memory game",
+        "thumbnail": "/thumbnail.jpg"
+      }
+    }
+  }
 }

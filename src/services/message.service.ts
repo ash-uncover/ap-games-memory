@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux'
 import { AnyAction } from '@reduxjs/toolkit'
 import MessageDispatcher, { Message, MessageService } from '@uncover/js-utils-microfrontend'
 
-MessageDispatcher.start('MED')
-const MessageServiceCentral = new MessageService('MES')
+MessageDispatcher.start()
+const MessageServiceCentral = new MessageService()
 
 export const useDispatchMessage = (dispatch?: Dispatch<AnyAction>) => {
   let dispatcher = dispatch || useDispatch()

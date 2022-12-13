@@ -1,8 +1,15 @@
 {
-  "id": "memory",
-  "name": "Memory",
-  "url": "",
-  "description": "A memory game",
-  "icon": "/favicon.png",
-  "thumbnail": "/thumbnail.jpg"
+  "name": "memory",
+  "url": "http://localhost:8082",
+  "provides": {
+    "game": {
+      "url": "",
+      "type": "iframe",
+      "properties": {
+        "name": "Memory",
+        "description": "A memory game",
+        "thumbnail": "/thumbnail.jpg"
+      }
+    }
+  }
 }

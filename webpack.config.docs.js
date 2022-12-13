@@ -40,6 +40,7 @@ module.exports = {
       ],
     }),
     new webpack.EnvironmentPlugin({
+      AP_GAMES_MEMORY_PLUGIN: 'https://ash-uncover.github.io/ap-games-memory/plugin.json',
       AP_GAMES_MEMORY_PUBLIC: '/ap-games-memory'
     }),
     new HtmlWebpackPlugin({
