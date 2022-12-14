@@ -17,7 +17,7 @@ const transformPlugin = (buffer) => {
 }
 
 module.exports = {
-  entry: path.resolve(DIR_SRC, 'index_docs.tsx'),
+  entry: path.resolve(DIR_SRC, 'index.tsx'),
 
   output: {
     clean: true,

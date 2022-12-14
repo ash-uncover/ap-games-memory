@@ -4,9 +4,11 @@ const LOGGER = new Logger('CONFIG')
 const CONFIG: {
   AP_GAMES_MEMORY_PLUGIN: string
   AP_GAMES_MEMORY_PUBLIC: string
+  AP_GAMES_MEMORY_ENVIRONMENT: string
 } = {
   AP_GAMES_MEMORY_PLUGIN: 'http://localhost:8082',
   AP_GAMES_MEMORY_PUBLIC: '',
+  AP_GAMES_MEMORY_ENVIRONMENT: 'local',
 }
 
 // Load config from env
@@ -17,6 +19,9 @@ try {
   }
   if (process.env.AP_GAMES_MEMORY_PUBLIC) {
     CONFIG.AP_GAMES_MEMORY_PUBLIC = process.env.AP_GAMES_MEMORY_PUBLIC
+  }
+  if (process.env.AP_GAMES_MEMORY_ENVIRONMENT) {
+    CONFIG.AP_GAMES_MEMORY_ENVIRONMENT = process.env.AP_GAMES_MEMORY_ENVIRONMENT
   }
 } catch (error) {
   LOGGER.warn('Failed to load from process.env')
