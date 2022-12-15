@@ -1,12 +1,11 @@
 /* eslint-disable */
 
-const webpack = require('webpack')
 const path = require('path')
 
 const { merge } = require('webpack-merge')
 const base = require('./webpack.config.base.js')
 
-const DIR_DOCS = path.resolve(__dirname, 'docs')
+const DIR_DIST = path.resolve(__dirname, 'dist')
 const DIR_PUBLIC = path.resolve(__dirname, 'public')
 
 const CopyPlugin = require('copy-webpack-plugin')
@@ -14,16 +13,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const transformPlugin = (buffer) => {
   const plugin = JSON.parse(buffer.toString())
-  plugin.url = 'https://ash-uncover.github.io/ap-games-memory'
+  plugin.url = 'http://localhost:8081'
   return JSON.stringify(plugin, null, 2)
 }
 
 module.exports = merge(base, {
-  mode: 'production',
+  mode: 'development',
 
   output: {
     clean: true,
-    path: DIR_DOCS,
+    path: DIR_DIST,
     filename: '[name].bundle.js',
     publicPath: '/',
   },
@@ -31,24 +30,33 @@ module.exports = merge(base, {
   plugins: [
     new HtmlWebpackPlugin({
       favicon: './public/favicon.png',
-      template: './src/index_docs.html',
+      template: './src/index.html',
       title: 'AP Memory',
-      publicPath: '/ap-games-memory'
     }),
     new CopyPlugin({
       patterns: [{
         from: path.resolve(__dirname, 'plugin.json'),
         to: '.',
         transform: transformPlugin
-      }, {
-        from: DIR_PUBLIC,
-        to: '.',
       }],
     }),
-    new webpack.EnvironmentPlugin({
-      AP_GAMES_MEMORY_PLUGIN: 'https://ash-uncover.github.io/ap-games-memory/plugin.json',
-      AP_GAMES_MEMORY_PUBLIC: '/ap-games-memory',
-      AP_GAMES_MEMORY_ENVIRONMENT: 'github',
-    }),
-  ]
+  ],
+
+  devtool: 'eval-source-map',
+
+  devServer: {
+    client: {
+      progress: false,
+    },
+    compress: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    historyApiFallback: true,
+    port: 8081,
+    static: {
+      directory: DIR_PUBLIC,
+    },
+  },
 })
+
