@@ -8,9 +8,7 @@ const RouteHome = () => {
   // Rendering //
 
   return (
-    <Home>
-      <Outlet />
-    </Home>
+    <Home />
   )
 }
 

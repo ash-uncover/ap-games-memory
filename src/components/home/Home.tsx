@@ -1,18 +1,77 @@
 import React, { ReactNode, useEffect } from 'react'
-import { AudioTypes, ShortcutManager, Shortcuts } from '@uncover/games-common'
+import { useSelector } from 'react-redux'
+// Store
+import AppSelectors from 'store/app/app.selectors'
 // Libs
+import { AudioTypes, PageMenu, ShortcutManager, Shortcuts } from '@uncover/games-common'
 import Audio, { AudioFiles } from 'lib/utils/Audio'
+// Components
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import HomeSettingsGeneral from './settings/HomeSettingsGeneral'
+import HomeSettingsAudio from './settings/HomeSettingsAudio'
+import HomeCredits from './credits/HomeCredits'
+import HomeSettingsVideo from './settings/HomeSettingsVideo'
+import HomePlay from './play/HomePlay'
+import { HomeExit } from './exit/HomeExit'
 
-import './Home.css'
+const HOME_PAGE: { [key: string]: any } = {}
+HOME_PAGE.LIBRARY = {
+  id: 'play',
+  icon: <FontAwesomeIcon icon={['fas', 'gamepad']} />,
+  title: 'Play',
+  content: <HomePlay />
+}
+HOME_PAGE.SETTINGS_GENERAL = {
+  id: 'settings-general',
+  icon: <FontAwesomeIcon icon={['fas', 'wrench']} />,
+  title: 'General',
+  content: <HomeSettingsGeneral />,
+}
+HOME_PAGE.SETTINGS_AUDIO = {
+  id: 'settings-audio',
+  icon: <FontAwesomeIcon icon={['fas', 'sliders']} />,
+  title: 'Audio',
+  content: <HomeSettingsAudio />,
+}
+HOME_PAGE.SETTINGS_VIDEO = {
+  id: 'settings-video',
+  icon: <FontAwesomeIcon icon={['fas', 'desktop']} />,
+  title: 'Video',
+  content: <HomeSettingsVideo />,
+}
+HOME_PAGE.SETTINGS = {
+  id: 'settings',
+  icon: <FontAwesomeIcon icon={['fas', 'gear']} />,
+  title: 'Settings',
+  content: null,
+  pages: [
+    HOME_PAGE.SETTINGS_GENERAL,
+    HOME_PAGE.SETTINGS_AUDIO,
+    HOME_PAGE.SETTINGS_VIDEO
+  ]
+}
+HOME_PAGE.CREDITS = {
+  id: 'credits',
+  icon: <FontAwesomeIcon icon={['fas', 'gifts']} />,
+  title: 'Credits',
+  content: <HomeCredits />
+}
+HOME_PAGE.EXIT = {
+  id: 'exit',
+  icon: <FontAwesomeIcon icon={['fas', 'right-from-bracket']} />,
+  title: 'Exit',
+  content: <HomeExit />
+}
 
 interface HomeProperties {
-  children: ReactNode
 }
+
 const Home = ({
-  children
 }: HomeProperties) => {
 
   // Hooks //
+
+  const embedded = useSelector(AppSelectors.embedded)
 
   useEffect(() => {
     return Audio.play(
@@ -32,28 +91,24 @@ const Home = ({
 
   // Rendering //
 
+  const pages = [
+    HOME_PAGE.LIBRARY,
+    HOME_PAGE.SETTINGS,
+    HOME_PAGE.CREDITS
+  ]
+  if (embedded) {
+    pages.push(HOME_PAGE.EXIT)
+  }
+
   return (
-    <div className='home'>
-      <div className='layer layer-background' />
-      <div className='layer layer-opacity'>
-        <span
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            right: 0,
-            color: 'darkgrey',
-            margin: '1rem',
-            fontStyle: 'italic',
-            fontSize: '0.75rem',
-          }}
-        >
-          @uncover 2023
-        </span>
-      </div>
-      <div className='layer layer-content'>
-        {children}
-      </div>
-    </div>
+    <PageMenu
+      page={{
+        id: 'home',
+        title: 'Home',
+        content: null,
+        pages
+      }}
+    />
   )
 }
 

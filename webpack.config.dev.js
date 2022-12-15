@@ -13,7 +13,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const transformPlugin = (buffer) => {
   const plugin = JSON.parse(buffer.toString())
-  plugin.url = 'http://localhost:8081'
+  plugin.url = 'http://localhost:8082'
   return JSON.stringify(plugin, null, 2)
 }
 
@@ -53,7 +53,7 @@ module.exports = merge(base, {
       'Access-Control-Allow-Origin': '*',
     },
     historyApiFallback: true,
-    port: 8081,
+    port: 8082,
     static: {
       directory: DIR_PUBLIC,
     },
