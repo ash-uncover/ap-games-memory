@@ -8,6 +8,10 @@
     "start": "npm i && webpack serve --progress --mode development"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@uncover/games-common": "ash-uncover/ap-games-common",
     "@uncover/js-utils": "^0.0.11",
     "@uncover/js-utils-fetch": "^0.0.3",
