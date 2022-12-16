@@ -45,12 +45,15 @@ const HomePlay = () => {
   // Rendering //
 
   return (
-    <button
-      title='New Game'
-      onClick={handleStart}
-    >
-      Start
-    </button>
+    <>
+
+      <button
+        title='New Game'
+        onClick={handleStart}
+      >
+        Start
+      </button>
+    </>
   )
 }
 

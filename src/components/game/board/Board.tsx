@@ -5,7 +5,7 @@ import GameSelectors from 'store/game/game.selectors'
 // Libs
 // Components
 import BoardTile from 'components/game/board/BoardTile'
-import SquareGrid from 'components/commons/grid/SquareGrid'
+import { SquareGrid } from '@uncover/games-common'
 
 import './Board.css'
 
