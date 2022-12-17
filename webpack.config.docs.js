@@ -14,7 +14,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const transformPlugin = (buffer) => {
   const plugin = JSON.parse(buffer.toString())
-  plugin.url = 'https://ash-uncover.github.io/ap-games-memory#'
+  plugin.url = 'https://ash-uncover.github.io/ap-games-memory'
+  plugin.provides.game.url = '#'
   return JSON.stringify(plugin, null, 2)
 }
 
