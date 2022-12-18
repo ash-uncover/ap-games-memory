@@ -13,10 +13,10 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@uncover/games-common": "ash-uncover/ap-games-common",
-    "@uncover/js-utils": "^0.0.11",
+    "@uncover/js-utils": "^0.0.12",
     "@uncover/js-utils-fetch": "^0.0.3",
     "@uncover/js-utils-logger": "^0.1.5",
-    "@uncover/js-utils-microfrontend": "0.0.9",
+    "@uncover/js-utils-microfrontend": "1.0.0",
     "i18next": "^22.4.5",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-chained-backend": "^4.2.0",
@@ -26,7 +26,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.1",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.4.5"
+    "react-router-dom": "^6.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
@@ -37,7 +37,7 @@
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
     "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.7.2",
+    "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
     "postcss": "^8.4.20",
     "postcss-loader": "^7.0.2",

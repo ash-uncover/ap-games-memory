@@ -2,13 +2,18 @@
   "name": "memory",
   "url": "http://localhost:8082",
   "provides": {
-    "game": {
-      "url": "",
-      "type": "iframe",
-      "properties": {
+    "ap-games/game": {
+      "name": "memory",
+      "attributes": {
         "name": "Memory",
         "description": "A memory game",
         "thumbnail": "/thumbnail.jpg"
+      },
+      "elements": {
+        "main": {
+          "url": "",
+          "type": "iframe"
+        }
       }
     }
   }
