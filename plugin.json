@@ -7,7 +7,7 @@
       "attributes": {
         "name": "Memory",
         "description": "A memory game",
-        "thumbnail": "/thumbnail.jpg"
+        "thumbnail": "/images/thumbnail.jpg"
       },
       "elements": {
         "main": {
