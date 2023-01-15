@@ -72,15 +72,16 @@ export const HomeContentPlay = ({
           </h2>
         </Panel>
 
-        <PanelButton
-          className='home-play__main-action'
-          title={t('home.play.start.tooltip')}
-          onClick={handleStart}
-        >
-          {t('home.play.start.text')}
-        </PanelButton>
-
       </div>
+
+      <PanelButton
+        className='home-play__main-action'
+        title={t('home.play.start.tooltip')}
+        onClick={handleStart}
+      >
+        {t('home.play.start.text')}
+      </PanelButton>
+
     </div>
   )
 }
