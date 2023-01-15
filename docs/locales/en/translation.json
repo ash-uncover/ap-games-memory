@@ -1,0 +1,104 @@
+{
+  "LOADING": "Loading...",
+  "BACK": "Back",
+  "CLOSE": "Close",
+
+  "home": {
+    "menu": "Home",
+    "title": "Home",
+    "play": {
+      "menu": "Play",
+      "title": "New Game",
+      "size": {
+        "title": "Board Size"
+      },
+      "start": {
+        "text": "Start",
+        "tooltip": "Start Game"
+      }
+    },
+    "settings": {
+      "menu": "Settings",
+      "general": {
+        "menu": "General",
+        "title": "General Settings",
+        "lang": {
+          "title": "Language"
+        },
+        "theme": {
+          "title": "Theme"
+        },
+        "keys": {
+          "title": "Key Bindings"
+        }
+      },
+      "audio": {
+        "menu": "Audio",
+        "title": "Audio Settings",
+        "master": {
+          "title": "Master Volume",
+          "enable": "Enable sounds"
+        },
+        "game": {
+          "title": "Game Volume",
+          "enable": "Enable Game sounds"
+        },
+        "interface": {
+          "title": "Interface Volume",
+          "enable": "Enable Interface sounds"
+        },
+        "music": {
+          "title": "Music Volume",
+          "enable": "Enable music"
+        }
+      },
+      "display": {
+        "menu": "Display",
+        "title": "Display Settings",
+        "brightness": {
+          "title": "Brightness"
+        },
+        "contrast": {
+          "title": "Contrast"
+        }
+      }
+    },
+    "credits": {
+      "menu": "Credits",
+      "title": "Credits",
+      "art": {
+        "title": "Arts"
+      }
+    },
+    "exit": {
+      "menu": "Exit"
+    }
+  },
+  "game": {
+    "start": {
+      "text": "Start",
+      "tooltip": "Start Game"
+    },
+    "next": {
+      "text": "Next Image",
+      "tooltip": "Sélect next image"
+    },
+    "previous": {
+      "text": "Previous Image",
+      "tooltip": "Sélect previous image"
+    },
+    "dialogs": {
+      "defeat": {
+        "title": "Menu",
+        "replay": "Restart",
+        "quit": "Main Menu"
+      },
+      "victory": {
+        "title": "Level Cmpleted",
+        "replay": "Replay",
+        "next": "Next Level",
+        "quit": "Main Menu"
+      }
+    }
+  }
+}

@@ -19,7 +19,7 @@ const initialState: AppState = {
 
   embedded: false,
 
-  language: Language.DEFAULT.id,
+  language: Language.FRENCH.id,
 
   loaded: false,
   started: false,

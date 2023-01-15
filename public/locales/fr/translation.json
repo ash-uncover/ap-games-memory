@@ -1,0 +1,100 @@
+{
+  "LOADING": "Chargement...",
+  "BACK": "Retour",
+  "CLOSE": "Fermer",
+
+  "home": {
+    "menu": "Accueil",
+    "title": "Accueil",
+    "play": {
+      "menu": "Jouer",
+      "title": "Jouer",
+      "size": {
+        "title": "Taille de la grille"
+      },
+      "start": {
+        "text": "Nouvelle Partie",
+        "tooltip": "Démarrer la partie"
+      }
+    },
+    "settings": {
+      "menu": "Options",
+      "general": {
+        "menu": "Général",
+        "title": "Paramètres Généraux",
+        "lang": {
+          "title": "Langue"
+        },
+        "theme": {
+          "title": "Thème"
+        },
+        "keys": {
+          "title": "Contrôles"
+        }
+      },
+      "audio": {
+        "menu": "Sons",
+        "title": "Paramètres de Sons",
+        "master": {
+          "title": "Volume Principal",
+          "enable": "Activer les sons"
+        },
+        "game": {
+          "title": "Volume de Jeu",
+          "enable": "Activer les sons du jeu"
+        },
+        "interface": {
+          "title": "Volume d'Interface",
+          "enable": "Activer les sons de l'interface"
+        },
+        "music": {
+          "title": "Volume de Musique",
+          "enable": "Activer la musique"
+        }
+      },
+      "display": {
+        "menu": "Affichage",
+        "title": "Paramètres d'affichage",
+        "brightness": {
+          "title": "Luminosité"
+        },
+        "contrast": {
+          "title": "Contraste"
+        }
+      }
+    },
+    "credits": {
+      "menu": "Crédits",
+      "title": "Crédits",
+      "art": {
+        "title": "Arts"
+      }
+    },
+    "exit": {
+      "menu": "Quitter"
+    }
+  },
+  "game": {
+    "start": {
+      "text": "Commencer",
+      "tooltip": "Démarrer la partie"
+    },
+    "change": {
+      "text": "Modifier",
+      "tooltip": "Utiliser une autre image"
+    },
+    "dialogs": {
+      "defeat": {
+        "title": "Menu",
+        "replay": "Recommencer",
+        "quit": "Menu Principal"
+      },
+      "victory": {
+        "title": "Partie Terminée",
+        "replay": "Rejouer",
+        "next": "Niveau Suivant",
+        "quit": "Menu Principal"
+      }
+    }
+  }
+}

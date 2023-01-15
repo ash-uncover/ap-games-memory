@@ -1,0 +1,47 @@
+.home-play {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & .home-play__scroll-area {
+    flex-grow: 1;
+    height: 0;
+    overflow: auto;
+  }
+
+  & .home-play__main-action {
+    flex-shrink: 0;
+  }
+}
+
+/* XS Screen layout */
+
+.home-play {}
+
+/* S Screen layout */
+
+@media (min-width: 576px) {
+  .home-play {}
+}
+
+/* M Screen layout */
+
+@media (min-width: 768px) {
+  .home-play {}
+}
+
+/* L Screen layout */
+
+@media (min-width: 992px) {
+}
+
+/* XL Screen layout */
+
+@media (min-width: 1200px) {
+}
+
+/* XXL Screen layout */
+
+@media (min-width: 1400px) {
+
+}
