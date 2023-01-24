@@ -3,16 +3,17 @@
   "url": "http://localhost:8082",
   "provides": {
     "ap-games/game": {
-      "name": "memory",
-      "attributes": {
-        "name": "Memory",
-        "description": "A memory game",
-        "thumbnail": "/images/thumbnail.jpg"
-      },
-      "elements": {
-        "main": {
-          "url": "",
-          "type": "iframe"
+      "memory": {
+        "attributes": {
+          "name": "Memory",
+          "description": "A memory game",
+          "thumbnail": "/images/thumbnail.jpg"
+        },
+        "elements": {
+          "main": {
+            "url": "",
+            "type": "iframe"
+          }
         }
       }
     }

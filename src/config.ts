@@ -6,7 +6,7 @@ const CONFIG: {
   AP_GAMES_MEMORY_PUBLIC: string
   AP_GAMES_MEMORY_ENVIRONMENT: string
 } = {
-  AP_GAMES_MEMORY_PLUGIN: 'http://localhost:8082',
+  AP_GAMES_MEMORY_PLUGIN: 'http://localhost:8082/plugin.json',
   AP_GAMES_MEMORY_PUBLIC: '',
   AP_GAMES_MEMORY_ENVIRONMENT: 'local',
 }
