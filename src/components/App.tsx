@@ -1,13 +1,14 @@
 import React, { useEffect, ReactElement } from 'react'
+// Hooks
 import { useDispatch, useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { useWardService } from '@uncover/ward-react'
 // Store
 import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
 // Libs
 import { loadData } from 'lib/data'
-import { useLocation } from 'react-router-dom'
-import MessageServiceCentral from 'services/message.service'
-import { useTranslation } from 'react-i18next'
 
 interface AppProperties {
   children: ReactElement
@@ -27,6 +28,8 @@ const App = ({
 
   const language = useSelector(AppSelectors.language)
 
+  useWardService(dispatch)
+
   useEffect(() => {
     i18n.changeLanguage(language)
   }, [language])
@@ -35,7 +38,6 @@ const App = ({
     const embedded = query.has('embedded')
     if (embedded) {
       dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
-      return MessageServiceCentral.init(dispatch)
     }
   }, [])
 

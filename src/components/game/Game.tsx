@@ -5,14 +5,14 @@ import { Navigate } from 'react-router-dom'
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Libs
-import Audio, { AudioFiles } from 'lib/utils/Audio'
 import { GameStatuses } from 'lib/game/constants'
 // Components
 import Board from 'components/game/board/Board'
 // Libs
-import { AudioTypes } from '@uncover/games-common'
 
 import './Game.css'
+import { AudioCategories, useAudioEffect } from '@uncover/games-common'
+import CONFIG from 'config'
 
 const Game = ({ }) => {
 
@@ -25,12 +25,11 @@ const Game = ({ }) => {
   const errors = useSelector(GameSelectors.errors)
   const revealed = useSelector(GameSelectors.revealed)
 
-  useEffect(() => {
-    return Audio.play(
-      AudioFiles.game,
-      AudioTypes.MUSIC
-    )
-  }, [])
+  useAudioEffect([`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/game.mp3`], {
+    category: AudioCategories.MUSIC,
+    shufffle: true,
+    loop: true
+  })
 
   useEffect(() => {
     if (errors > 0) {

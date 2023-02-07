@@ -24,7 +24,7 @@ import Root from 'routes/__layout'
 
 import { ShortcutManager } from '@uncover/games-common'
 import CONFIG from 'config'
-import { WardProvider } from '@uncover/ward-react'
+import { WardDevTools, WardProvider } from '@uncover/ward-react'
 
 ShortcutManager.reset()
 
@@ -43,5 +43,8 @@ root.render(
         <Root />
       </Router>
     </Provider>
+    {CONFIG.AP_GAMES_MEMORY_ENVIRONMENT === 'local' ?
+      <WardDevTools />
+      : null}
   </WardProvider>
 )
