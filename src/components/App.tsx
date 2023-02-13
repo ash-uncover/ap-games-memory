@@ -1,14 +1,16 @@
 import React, { useEffect, ReactElement } from 'react'
 // Hooks
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useWardService } from '@uncover/ward-react'
 // Store
 import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
+import { AppLoadStatuses } from 'store/app/app.state'
+import { Display } from './common/display/Display'
+import AppLoading from './AppLoading'
 // Libs
-import { loadData } from 'lib/data'
 
 interface AppProperties {
   children: ReactElement
@@ -21,42 +23,50 @@ const App = ({
   // Hooks //
 
   const dispatch = useDispatch()
+
+  const navigate = useNavigate()
+
   const { t, i18n } = useTranslation()
 
   const query = useQuery()
-  const loaded = useSelector(AppSelectors.loaded)
+  const loadStatus = useSelector(AppSelectors.loadStatus)
 
   const language = useSelector(AppSelectors.language)
 
   useWardService(dispatch)
 
   useEffect(() => {
+    navigate('/')
+  }, [])
+
+  useEffect(() => {
     i18n.changeLanguage(language)
   }, [language])
 
   useEffect(() => {
-    const embedded = query.has('embedded')
-    if (embedded) {
-      dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
-    }
-  }, [])
-
-  useEffect(() => {
-    loadData()
-      .then(() => dispatch(AppSlice.actions.setLoaded(true)))
+    dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
   }, [])
 
   // Rendering //
 
-  if (loaded) {
-    return children
+  switch (loadStatus) {
+    case AppLoadStatuses.NONE:
+    case AppLoadStatuses.LOADING:
+    case AppLoadStatuses.READY: {
+      return (
+        <Display className='app'>
+          <AppLoading />
+        </Display>
+      )
+    }
+    case AppLoadStatuses.STARTED: {
+      return (
+        <Display className='app'>
+          {children}
+        </Display>
+      )
+    }
   }
-
-  return (
-    <div className='app'>
-      {t('LOADING')}
-    </div>
-  )
 }
 
 const useQuery = () => {

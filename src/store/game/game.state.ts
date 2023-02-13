@@ -1,7 +1,11 @@
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
-import { GameDifficulty, GameStatus } from 'lib/game/constants'
+import { GameStatus } from 'lib/game/constants'
 
 export interface GameState {
+  size: number
+  theme: string
+  themeSelected: string
+
   status: GameStatus
 
   startTime: number
@@ -10,10 +14,11 @@ export interface GameState {
   errors: number
   revealed: number
 
-  difficulty: GameDifficulty
   board: GameBoardState
-
   tiles: GameBoardTilesState
+
+  dialog: string | null
+  dialogParams: any | null
 }
 
 export interface GameBoardState {

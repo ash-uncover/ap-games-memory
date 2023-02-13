@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 // Store
 import GameSlice from 'store/game/game.slice'
 // Libs
 import {
-  GameDifficulties
+  CARDS_MAX,
+  CARDS_MIN
 } from 'lib/game/constants'
 // Components
 import {
   Panel,
   PanelButton,
   ShortcutManager,
-  Shortcuts
+  Shortcuts,
+  Slider
 } from '@uncover/games-common'
-
+// Styles
 import './HomeContentPlay.css'
+import GameSelectors from 'store/game/game.selectors'
+import { ThemeTiles } from './ThemeTiles'
 
 export interface HomeContentPlayProperties {
 
@@ -31,15 +35,14 @@ export const HomeContentPlay = ({
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { t } = useTranslation()
-
-  const [difficulty, setDifficulty] = useState(GameDifficulties.MEDIUM)
+  const size = useSelector(GameSelectors.size)
 
   useEffect(() => {
     const shortcuts: Shortcuts = {
       id: 'home-new-shortcuts',
       priority: 1,
       shortcuts: [
-        { code: 'KeyS', callback: handleStart },
+        { code: 'KeyS', callback: handleGameLaunch },
         { code: 'Escape', callback: handleBack },
       ]
     }
@@ -48,10 +51,12 @@ export const HomeContentPlay = ({
 
   // Events //
 
-  const handleStart = () => {
-    dispatch(GameSlice.actions.startGame({
-      difficulty
-    }))
+  const handleSizeSelected = (size: number) => {
+    dispatch(GameSlice.actions.setSize(size))
+  }
+
+  const handleGameLaunch = () => {
+    dispatch(GameSlice.actions.gameLaunch())
     navigate('/game')
   }
 
@@ -72,12 +77,26 @@ export const HomeContentPlay = ({
           </h2>
         </Panel>
 
+        <Panel title={t('home.play.size.title')}>
+          <Slider
+            label={t('home.play.size.slider.title')}
+            min={CARDS_MIN}
+            max={CARDS_MAX}
+            value={size}
+            onChange={handleSizeSelected}
+          />
+        </Panel>
+
+        <Panel title={t('home.settings.general.theme.title')}>
+          <ThemeTiles />
+        </Panel>
+
       </div>
 
       <PanelButton
         className='home-play__main-action'
         title={t('home.play.start.tooltip')}
-        onClick={handleStart}
+        onClick={handleGameLaunch}
       >
         {t('home.play.start.text')}
       </PanelButton>

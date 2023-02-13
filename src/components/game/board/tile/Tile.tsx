@@ -1,8 +1,8 @@
 import React from 'react'
 // Libs
-import CONFIG from 'config'
-import { Cards } from 'lib/data'
-import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
+import {
+  GameBoardTile
+} from 'lib/game/board/tiles/tile.model'
 
 import './Tile.css'
 
@@ -11,7 +11,8 @@ interface TileProperties extends GameBoardTile {
 }
 
 const Tile = ({
-  card,
+  src,
+  color,
   revealed,
   found,
   onClick
@@ -25,8 +26,6 @@ const Tile = ({
 
   // Rendering //
 
-  const cardData = Cards[card]
-
   const classes = ['tile']
   if (revealed) {
     classes.push('tile-revealed')
@@ -39,7 +38,7 @@ const Tile = ({
     <div
       className={classes.join(' ')}
       style={{
-        background: cardData.color
+        background: color
       }}
       onClick={handleTileClick}
     >
@@ -47,7 +46,7 @@ const Tile = ({
         className='tile-image'
         width='100%'
         height='100%'
-        src={`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/images/cards/${cardData.src}`}
+        src={src}
       />
       <div className='tile-mask tile-mask-top' />
       <div className='tile-mask tile-mask-left' />

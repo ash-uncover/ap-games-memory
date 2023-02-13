@@ -1,6 +1,60 @@
 {
   "name": "memory",
   "url": "http://localhost:8082",
+  "dependencies": [
+    "https://ash-uncover.github.io/ap-games-memory-themes/plugin.json"
+  ],
+  "defines": {
+    "theme": {
+      "attributes": {
+        "name": "string",
+        "description": "string",
+        "thumbnail": "url",
+        "background?": "url",
+        "card0": "url",
+        "card1": "url",
+        "card2": "url",
+        "card3": "url",
+        "card4": "url",
+        "card5": "url",
+        "card6": "url",
+        "card7": "url",
+        "card8": "url",
+        "card9": "url",
+        "card10": "url",
+        "card11": "url",
+        "card12": "url",
+        "card13": "url",
+        "card14": "url",
+        "card15": "url",
+        "card16": "url",
+        "card17": "url",
+        "card18": "url",
+        "card19": "url",
+        "card20": "url",
+        "card21": "url",
+        "card22": "url",
+        "card23": "url",
+        "card24": "url",
+        "card25": "url",
+        "card26": "url",
+        "card27": "url",
+        "card28": "url",
+        "card29": "url",
+        "card30": "url",
+        "card31": "url",
+        "card32": "url",
+        "card33": "url",
+        "card34": "url",
+        "card35": "url",
+        "card36": "url",
+        "card37": "url",
+        "card38": "url",
+        "card39": "url",
+        "music?": "url[]"
+      }
+    }
+  },
   "provides": {
     "ap-games/game": {
       "memory": {
@@ -14,6 +68,61 @@
             "url": "",
             "type": "iframe"
           }
+        }
+      }
+    },
+    "memory/theme": {
+      "ac": {
+        "attributes": {
+          "name": "Animal Crossing",
+          "description": "An Animal Crossing inspired theme",
+          "thumbnail": "/theme/thumbnail.jpg",
+          "card0": "/theme/card0.png",
+          "card1": "/theme/card1.png",
+          "card2": "/theme/card2.png",
+          "card3": "/theme/card3.png",
+          "card4": "/theme/card4.png",
+          "card5": "/theme/card5.png",
+          "card6": "/theme/card6.png",
+          "card7": "/theme/card7.png",
+          "card8": "/theme/card8.png",
+          "card9": "/theme/card9.png",
+          "card10": "/theme/card10.png",
+          "card11": "/theme/card11.png",
+          "card12": "/theme/card12.png",
+          "card13": "/theme/card13.png",
+          "card14": "/theme/card14.png",
+          "card15": "/theme/card15.png",
+          "card16": "/theme/card16.png",
+          "card17": "/theme/card17.png",
+          "card18": "/theme/card18.png",
+          "card19": "/theme/card19.png",
+          "card20": "/theme/card20.png",
+          "card21": "/theme/card21.png",
+          "card22": "/theme/card22.png",
+          "card23": "/theme/card23.png",
+          "card24": "/theme/card24.png",
+          "card25": "/theme/card25.png",
+          "card26": "/theme/card26.png",
+          "card27": "/theme/card27.png",
+          "card28": "/theme/card28.png",
+          "card29": "/theme/card29.png",
+          "card30": "/theme/card30.png",
+          "card31": "/theme/card31.png",
+          "card32": "/theme/card32.png",
+          "card33": "/theme/card33.png",
+          "card34": "/theme/card34.png",
+          "card35": "/theme/card35.png",
+          "card36": "/theme/card36.png",
+          "card37": "/theme/card37.png",
+          "card38": "/theme/card38.png",
+          "card39": "/theme/card39.png",
+          "music": [
+            "/music_0.mp3",
+            "/music_1.mp3",
+            "/music_2.mp3",
+            "/music_3.mp3"
+          ]
         }
       }
     }

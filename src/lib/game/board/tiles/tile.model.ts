@@ -1,6 +1,6 @@
 export interface GameBoardTile {
-  id: string
-  card: string
+  src: string
+  color: string
   revealed: boolean
   found: boolean
 }

@@ -5,29 +5,27 @@ import {
 } from '@reduxjs/toolkit'
 
 import {
-  ArrayUtils,
-  UUID
-} from '@uncover/js-utils'
-
-import {
   GameState,
 } from 'store/game/game.state'
 
 import {
-  GameDifficulties,
-  GameDifficulty,
+  CARDS_DEFAULT,
+  CARDS_MAX,
+  CARDS_MIN,
   GameStatuses
 } from 'lib/game/constants'
 
-import { Cards } from 'lib/data'
-import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
-import { Card } from 'lib/data/card.helper'
+import Ward from '@uncover/ward'
 
 // STATE //
 
 const initialState: GameState = {
+  size: CARDS_DEFAULT,
+  theme: null,
+  themeSelected: null,
+
   status: GameStatuses.GAME_NOT_STARTED,
-  difficulty: GameDifficulties.EASY,
+
   startTime: 0,
   endTime: 0,
 
@@ -36,21 +34,40 @@ const initialState: GameState = {
 
   board: { tiles: [] },
   tiles: {},
+
+  dialog: null,
+  dialogParams: null,
 }
 
 // REDUCERS //
 
-interface StartGamePayload {
-  difficulty: GameDifficulty
+const setSize: CaseReducer<GameState, PayloadAction<number>> = (state, action) => {
+  state.size = Math.min(CARDS_MAX, Math.max(CARDS_MIN, action.payload))
 }
-const startGame: CaseReducer<GameState, PayloadAction<StartGamePayload>> = (state, action) => {
-  const {
-    difficulty
-  } = action.payload
 
-  const nbCards = 8
+interface SetThemePayload {
+  theme: string
+  themeSelected: string
+}
+const setTheme: CaseReducer<GameState, PayloadAction<SetThemePayload>> = (state, action) => {
+  state.theme = action.payload.theme
+  state.themeSelected = action.payload.themeSelected
+}
+
+const gameLaunch: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  state.status = GameStatuses.GAME_LOADING
+}
+
+const gameReady: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  state.status = GameStatuses.GAME_READY
+}
+
+const gameStart: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  const aThemes = Ward.data.providers['memory/theme']
+  console.log(aThemes)
+  /*
   const allCards: Card[] = Object.values(Cards)
-  const baseCards: Card[] = ArrayUtils.randomSubArray<Card>(allCards, nbCards)
+  const baseCards: Card[] = ArrayUtils.randomSubArray<Card>(allCards, state.size)
   const chosenCards: Card[] = ArrayUtils.shuffle<Card>([...baseCards, ...baseCards])
 
   chosenCards.forEach((card: Card) => {
@@ -63,9 +80,9 @@ const startGame: CaseReducer<GameState, PayloadAction<StartGamePayload>> = (stat
     state.tiles[tile.id] = tile
     state.board.tiles.push(tile.id)
   })
+  */
 
   state.startTime = new Date().getTime()
-  state.difficulty = difficulty
   state.status = GameStatuses.GAME_ON_GOING
 }
 
@@ -79,7 +96,7 @@ const revealCard: CaseReducer<GameState, PayloadAction<RevealCardPayload>> = (st
   if (!tile.found && !tile.revealed && revealedTiles.length < 2) {
     tile.revealed = true
     if (revealedTiles.length === 1) {
-      if (revealedTiles[0].card === tile.card) {
+      if (revealedTiles[0].src === tile.src) {
         revealedTiles[0].found = true
         revealedTiles[0].revealed = false
         tile.found = true
@@ -104,8 +121,29 @@ const unrevealCards: CaseReducer<GameState, PayloadAction<void>> = (state, actio
   })
 }
 
-const endGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  Object.assign(state, initialState)
+const gameEnd: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  Object.assign(state, {
+    ...initialState,
+    size: state.size,
+    theme: state.theme,
+  })
+}
+
+type PayloadDialog = {
+  dialog: string | null,
+  params?: any,
+}
+const openDialog: CaseReducer<GameState, PayloadAction<PayloadDialog>> = (state, action) => {
+  const {
+    dialog,
+    params,
+  } = action.payload
+  state.dialog = dialog
+  state.dialogParams = params
+}
+const closeDialog: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  state.dialog = null
+  state.dialogParams = null
 }
 
 // SLICE //
@@ -115,12 +153,20 @@ const GameSlice = createSlice({
   initialState,
 
   reducers: {
-    startGame,
+    setSize,
+    setTheme,
+
+    gameLaunch,
+    gameReady,
+    gameStart,
 
     revealCard,
     unrevealCards,
 
-    endGame,
+    gameEnd,
+
+    openDialog,
+    closeDialog,
   },
 })
 

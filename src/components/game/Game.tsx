@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+// Hooks
+import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+import { useWardProviders } from '@uncover/ward-react'
+import { useTheme, useThemeCards, useThemeMusics } from 'lib/game/board/board.helper'
 // Store
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
@@ -8,47 +11,26 @@ import GameSlice from 'store/game/game.slice'
 import { GameStatuses } from 'lib/game/constants'
 // Components
 import Board from 'components/game/board/Board'
+import { GameLoading } from './GameLoading'
+import { GamePlaying } from './GamePlaying'
 // Libs
 
 import './Game.css'
-import { AudioCategories, useAudioEffect } from '@uncover/games-common'
-import CONFIG from 'config'
+import { Dialogs } from './dialogs/Dialogs'
 
 const Game = ({ }) => {
 
   // Hooks //
 
-  const dispatch = useDispatch()
-
   const status = useSelector(GameSelectors.status)
 
-  const errors = useSelector(GameSelectors.errors)
-  const revealed = useSelector(GameSelectors.revealed)
+  const audios = useThemeMusics()
+  const images = useThemeCards()
 
-  useAudioEffect([`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/game.mp3`], {
-    category: AudioCategories.MUSIC,
-    shufffle: true,
-    loop: true
-  })
-
-  useEffect(() => {
-    if (errors > 0) {
-      setTimeout(() => dispatch(GameSlice.actions.unrevealCards()), 1000)
-    }
-  }, [errors])
-
-  useEffect(() => {
-    dispatch(GameSlice.actions.unrevealCards())
-  }, [revealed])
-
-  // Events //
-
-  const handleEndGame = () => {
-    dispatch(GameSlice.actions.endGame())
-  }
 
   // Rendering //
 
+  /*
   if (status === GameStatuses.GAME_NOT_STARTED) {
     return (
       <Navigate to='/' />
@@ -75,7 +57,7 @@ const Game = ({ }) => {
           <div className='game-dialog'>
             VICTORY
             <button
-              onClick={handleEndGame}
+              onClick={handleGameEnd}
             >
               Return to Main Menu
             </button>
@@ -83,6 +65,40 @@ const Game = ({ }) => {
         </div>
         : null}
     </div>
+  )
+  */
+
+  const renderGame = () => {
+    switch (status) {
+      case GameStatuses.GAME_NOT_STARTED: {
+        return <Navigate to='/' />
+      }
+      case GameStatuses.GAME_LOADING: {
+        return (
+          <GameLoading
+            images={images}
+            audios={audios}
+          />
+        )
+      }
+      case GameStatuses.GAME_READY:
+      case GameStatuses.GAME_ON_GOING:
+      case GameStatuses.GAME_ENDED_DEFEAT:
+      case GameStatuses.GAME_ENDED_VICTORY: {
+        return (
+          <GamePlaying
+            audios={audios}
+          />
+        )
+      }
+    }
+  }
+
+  return (
+    <>
+      {renderGame()}
+      <Dialogs />
+    </>
   )
 }
 
