@@ -64,14 +64,16 @@ export const GamePlaying = ({
   }, [revealed])
 
   useEffect(() => {
-    setAnimate(true)
-    victoryTimeout = setTimeout(() => {
-      handleVictoryMenu()
-    }, 3000)
+    if (status === GameStatuses.GAME_ENDED_VICTORY) {
+      setAnimate(true)
+      victoryTimeout = setTimeout(() => {
+        handleVictoryMenu()
+      }, 3000)
+    }
     return () => {
       clearTimeout(victoryTimeout)
     }
-  }, [])
+  }, [status])
 
   const [reveal, setReveal] = useState(false)
 
