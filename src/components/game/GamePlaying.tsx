@@ -23,6 +23,7 @@ import {
 import {
   DIALOG
 } from './dialogs/Dialogs'
+import Board from './board/Board'
 
 let victoryTimeout
 
@@ -154,7 +155,7 @@ export const GamePlaying = ({
     <GameLayout
       header={`Memory - ${themeObj ? themeObj.attributes.name : 'Random'}`}
       content={
-        <div></div>
+        <Board />
       }
       footer={renderFooter()}
     />

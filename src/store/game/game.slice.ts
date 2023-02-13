@@ -16,6 +16,8 @@ import {
 } from 'lib/game/constants'
 
 import Ward from '@uncover/ward'
+import { ArrayUtils, UUID } from '@uncover/js-utils'
+import { getThemeCards } from 'lib/game/board/theme.helper'
 
 // STATE //
 
@@ -59,29 +61,27 @@ const gameLaunch: CaseReducer<GameState, PayloadAction<void>> = (state, action) 
 }
 
 const gameReady: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  state.status = GameStatuses.GAME_READY
-}
+  const theme = Ward.data.providers[state.theme]
+  const allCards = getThemeCards(theme)
+  const baseCards = ArrayUtils.randomSubArray(allCards, state.size)
+  const chosenCards = ArrayUtils.shuffle([...baseCards, ...baseCards])
 
-const gameStart: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  const aThemes = Ward.data.providers['memory/theme']
-  console.log(aThemes)
-  /*
-  const allCards: Card[] = Object.values(Cards)
-  const baseCards: Card[] = ArrayUtils.randomSubArray<Card>(allCards, state.size)
-  const chosenCards: Card[] = ArrayUtils.shuffle<Card>([...baseCards, ...baseCards])
-
-  chosenCards.forEach((card: Card) => {
-    const tile: GameBoardTile = {
+  chosenCards.forEach((card: string) => {
+    const tile = {
       id: `tile-${UUID.next()}`,
-      card: card.id,
+      src: card,
+      color: '#888',
       revealed: false,
       found: false
     }
     state.tiles[tile.id] = tile
     state.board.tiles.push(tile.id)
   })
-  */
+  
+  state.status = GameStatuses.GAME_READY
+}
 
+const gameStart: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
   state.startTime = new Date().getTime()
   state.status = GameStatuses.GAME_ON_GOING
 }

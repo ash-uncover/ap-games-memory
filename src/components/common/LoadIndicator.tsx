@@ -27,6 +27,7 @@ export const LoadIndicator = ({
       <LoadIndicatorElement className='element--1' />
       <LoadIndicatorElement className='element--2' />
       <LoadIndicatorElement className='element--3' />
+      <LoadIndicatorElement className='element--4' />
     </div>
   )
 }
@@ -48,7 +49,9 @@ const LoadIndicatorElement = ({
 
   return (
     <div className={classes.join(' ')}>
-      <div className='load-indicator-element__inner' />
+      <div className='load-indicator-element__inner'>
+        <div className='load-indicator-element__inner-inner' />
+      </div>
     </div>
   )
 }

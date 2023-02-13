@@ -1,22 +1,18 @@
 import React from 'react'
 // Hooks
 import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
-import { useWardProviders } from '@uncover/ward-react'
-import { useTheme, useThemeCards, useThemeMusics } from 'lib/game/board/board.helper'
+import { useThemeCards, useThemeMusics } from 'lib/game/board/theme.helper'
 // Store
 import GameSelectors from 'store/game/game.selectors'
-import GameSlice from 'store/game/game.slice'
 // Libs
 import { GameStatuses } from 'lib/game/constants'
 // Components
-import Board from 'components/game/board/Board'
+import { Navigate } from 'react-router-dom'
 import { GameLoading } from './GameLoading'
 import { GamePlaying } from './GamePlaying'
-// Libs
-
-import './Game.css'
 import { Dialogs } from './dialogs/Dialogs'
+// Styles
+import './Game.css'
 
 const Game = ({ }) => {
 
@@ -29,44 +25,6 @@ const Game = ({ }) => {
 
 
   // Rendering //
-
-  /*
-  if (status === GameStatuses.GAME_NOT_STARTED) {
-    return (
-      <Navigate to='/' />
-    )
-  }
-
-  return (
-    <div className='game'>
-      <div className='game-header'>
-        {`Error: ${errors}`}
-        {`Found: ${revealed}`}
-      </div>
-      <div
-        className='game-area'
-        style={{ position: 'relative' }}
-      >
-        <Board />
-      </div>
-      <div className='game-footer'>
-        footer
-      </div>
-      {status === GameStatuses.GAME_ENDED_VICTORY ?
-        <div className='game-layer'>
-          <div className='game-dialog'>
-            VICTORY
-            <button
-              onClick={handleGameEnd}
-            >
-              Return to Main Menu
-            </button>
-          </div>
-        </div>
-        : null}
-    </div>
-  )
-  */
 
   const renderGame = () => {
     switch (status) {
