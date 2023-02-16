@@ -9,10 +9,9 @@ import {
 } from 'store/game/game.state'
 
 import {
-  CARDS_DEFAULT,
-  CARDS_MAX,
-  CARDS_MIN,
-  GameStatuses
+  GameSizes,
+  GameStatuses,
+  getSize
 } from 'lib/game/constants'
 
 import Ward from '@uncover/ward'
@@ -22,7 +21,7 @@ import { getThemeCards } from 'lib/game/board/theme.helper'
 // STATE //
 
 const initialState: GameState = {
-  size: CARDS_DEFAULT,
+  size: GameSizes.SIZE_20,
   theme: null,
   themeSelected: null,
 
@@ -43,8 +42,8 @@ const initialState: GameState = {
 
 // REDUCERS //
 
-const setSize: CaseReducer<GameState, PayloadAction<number>> = (state, action) => {
-  state.size = Math.min(CARDS_MAX, Math.max(CARDS_MIN, action.payload))
+const setSize: CaseReducer<GameState, PayloadAction<string>> = (state, action) => {
+  state.size = getSize(action.payload) || GameSizes.SIZE_20
 }
 
 interface SetThemePayload {
@@ -63,7 +62,8 @@ const gameLaunch: CaseReducer<GameState, PayloadAction<void>> = (state, action) 
 const gameReady: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
   const theme = Ward.data.providers[state.theme]
   const allCards = getThemeCards(theme)
-  const baseCards = ArrayUtils.randomSubArray(allCards, state.size)
+  const nbCards = state.size.width * state.size.height / 2
+  const baseCards = ArrayUtils.randomSubArray(allCards, nbCards)
   const chosenCards = ArrayUtils.shuffle([...baseCards, ...baseCards])
 
   chosenCards.forEach((card: string) => {
@@ -77,7 +77,7 @@ const gameReady: CaseReducer<GameState, PayloadAction<void>> = (state, action) =
     state.tiles[tile.id] = tile
     state.board.tiles.push(tile.id)
   })
-  
+
   state.status = GameStatuses.GAME_READY
 }
 

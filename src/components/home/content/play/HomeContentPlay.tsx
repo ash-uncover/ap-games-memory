@@ -6,16 +6,15 @@ import { useTranslation } from 'react-i18next'
 import GameSlice from 'store/game/game.slice'
 // Libs
 import {
-  CARDS_MAX,
-  CARDS_MIN
+  GameSizes
 } from 'lib/game/constants'
 // Components
 import {
   Panel,
   PanelButton,
+  Select,
   ShortcutManager,
   Shortcuts,
-  Slider
 } from '@uncover/games-common'
 // Styles
 import './HomeContentPlay.css'
@@ -37,6 +36,13 @@ export const HomeContentPlay = ({
   const { t } = useTranslation()
   const size = useSelector(GameSelectors.size)
 
+  const sizes = Object.values(GameSizes).map(size => {
+    return {
+      id: size.id,
+      text: `${size.width * size.height / 2} Cards`
+    }
+  })
+
   useEffect(() => {
     const shortcuts: Shortcuts = {
       id: 'home-new-shortcuts',
@@ -51,7 +57,7 @@ export const HomeContentPlay = ({
 
   // Events //
 
-  const handleSizeSelected = (size: number) => {
+  const handleSizeSelected = (size: string) => {
     dispatch(GameSlice.actions.setSize(size))
   }
 
@@ -78,11 +84,9 @@ export const HomeContentPlay = ({
         </Panel>
 
         <Panel title={t('home.play.size.title')}>
-          <Slider
-            label={t('home.play.size.slider.title')}
-            min={CARDS_MIN}
-            max={CARDS_MAX}
-            value={size}
+          <Select
+            value={size.id}
+            values={sizes}
             onChange={handleSizeSelected}
           />
         </Panel>

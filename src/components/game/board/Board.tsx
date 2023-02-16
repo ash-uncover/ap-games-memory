@@ -5,8 +5,8 @@ import GameSelectors from 'store/game/game.selectors'
 // Libs
 // Components
 import BoardTile from 'components/game/board/BoardTile'
-import { SquareGrid } from '@uncover/games-common'
-
+import { GridTiles } from '@uncover/games-common'
+// Styles
 import './Board.css'
 
 const Board = ({
@@ -32,9 +32,12 @@ const Board = ({
 
   return (
     <div className='board'>
-      <SquareGrid>
+      <GridTiles
+        width={5}
+        height={7}
+      >
         {tiles.map(renderTile)}
-      </SquareGrid>
+      </GridTiles>
     </div>
   )
 }

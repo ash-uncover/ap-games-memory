@@ -1,8 +1,9 @@
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
-import { GameStatus } from 'lib/game/constants'
+import { GameSize, GameStatus } from 'lib/game/constants'
 
 export interface GameState {
-  size: number
+  size: GameSize
+
   theme: string
   themeSelected: string
 
