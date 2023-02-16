@@ -16,6 +16,7 @@ const Board = ({
   // Hooks //
 
   const tiles = useSelector(GameSelectors.boardTiles)
+  const size = useSelector(GameSelectors.size)
 
   // Events //
 
@@ -33,8 +34,8 @@ const Board = ({
   return (
     <div className='board'>
       <GridTiles
-        width={5}
-        height={7}
+        width={size.width}
+        height={size.height}
       >
         {tiles.map(renderTile)}
       </GridTiles>
