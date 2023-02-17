@@ -23,9 +23,6 @@ const BoardTile = ({
   const tile = useSelector(GameSelectors.tile(tileId))
   const cardBack = useThemeCardBack()
 
-  console.log(cardBack)
-
-
   // Events //
 
   const handleTileClick = () => {
