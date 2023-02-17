@@ -17,6 +17,12 @@ export const useThemeMusics = () => {
   return theme.attributes.music
 }
 
+export const useThemeCardBack = () => {
+  const theme = useTheme()
+  return theme.attributes.cardBack
+}
+
+
 export const getThemeCards = (theme) => {
   let cards = [
     theme.attributes.card0,

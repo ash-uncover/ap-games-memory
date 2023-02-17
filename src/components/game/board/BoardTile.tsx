@@ -6,6 +6,7 @@ import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Styles
 import './BoardTile.css'
+import { useTheme, useThemeCardBack } from 'lib/game/board/theme.helper'
 
 interface BoardTileProperties {
   tileId: string
@@ -20,6 +21,10 @@ const BoardTile = ({
   const dispatch = useDispatch()
 
   const tile = useSelector(GameSelectors.tile(tileId))
+  const cardBack = useThemeCardBack()
+
+  console.log(cardBack)
+
 
   // Events //
 
@@ -41,12 +46,15 @@ const BoardTile = ({
     <div
       className={classes.join(' ')}
       onClick={handleTileClick}
+      style={{
+        backgroundImage: `url(${cardBack})`
+      }}
     >
       <img
         className='board-tile__image'
         draggable={false}
-        width='100%'
-        height='100%'
+        width='101%'
+        height='101%'
         src={tile.src}
       />
     </div>
