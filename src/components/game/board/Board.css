@@ -3,4 +3,8 @@
   width: 100%;
   padding: 2rem;
   box-sizing: border-box;
+
+  & .grid-tiles-row-cell {
+    padding: 0.75%;
+  }
 }

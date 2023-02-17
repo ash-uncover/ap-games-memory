@@ -40,21 +40,15 @@ const BoardTile = ({
   return (
     <div
       className={classes.join(' ')}
-      style={{
-        background: tile.color
-      }}
       onClick={handleTileClick}
     >
       <img
         className='board-tile__image'
+        draggable={false}
         width='100%'
         height='100%'
         src={tile.src}
       />
-      <div className='board-tile__mask board-tile__mask-top' />
-      <div className='board-tile__mask board-tile__mask-left' />
-      <div className='board-tile__mask board-tile__mask-right' />
-      <div className='board-tile__mask board-tile__mask-bottom' />
     </div>
   )
 }
