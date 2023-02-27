@@ -9,9 +9,13 @@ import { GridTiles } from '@uncover/games-common'
 // Styles
 import './Board.css'
 
-const Board = ({
+interface BoardProperties {
+  onTileClick: (tileId: string) => void
+}
 
-}) => {
+const Board = ({
+  onTileClick
+}: BoardProperties) => {
 
   // Hooks //
 
@@ -20,6 +24,10 @@ const Board = ({
 
   // Events //
 
+  const handleTileClick = (tileId: string) => {
+    onTileClick(tileId)
+  }
+
   // Rendering //
 
   const renderTile = (tileId: string) => {
@@ -27,6 +35,7 @@ const Board = ({
       <BoardTile
         key={tileId}
         tileId={tileId}
+        onClick={() => handleTileClick(tileId)}
       />
     )
   }

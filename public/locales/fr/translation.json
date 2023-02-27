@@ -2,7 +2,9 @@
   "LOADING": "Chargement...",
   "BACK": "Retour",
   "CLOSE": "Fermer",
-
+  "app": {
+    "start": "Appuyer pour commencer"
+  },
   "home": {
     "menu": "Accueil",
     "title": "Accueil",
@@ -10,7 +12,8 @@
       "menu": "Jouer",
       "title": "Jouer",
       "size": {
-        "title": "Taille de la grille"
+        "title": "Taille de la grille",
+        "text": "{{number}} cartes"
       },
       "start": {
         "text": "Nouvelle Partie",
@@ -79,21 +82,18 @@
       "text": "Commencer",
       "tooltip": "Démarrer la partie"
     },
-    "change": {
-      "text": "Modifier",
-      "tooltip": "Utiliser une autre image"
-    },
     "dialogs": {
       "defeat": {
         "title": "Menu",
         "replay": "Recommencer",
-        "quit": "Menu Principal"
+        "quit": "Quitter",
+        "continue": "Reprendre"
       },
       "victory": {
         "title": "Partie Terminée",
         "replay": "Rejouer",
-        "next": "Niveau Suivant",
-        "quit": "Menu Principal"
+        "quit": "Quitter",
+        "continue": "Reprendre"
       }
     }
   }

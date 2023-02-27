@@ -11,6 +11,7 @@ import CONFIG from 'config'
 import { GameStatuses } from 'lib/game/constants'
 import {
   AudioCategories,
+  useAudio,
   useAudioEffect
 } from '@uncover/games-common'
 // Components
@@ -40,12 +41,26 @@ export const GamePlaying = ({
   const dispatch = useDispatch()
   const [animate, setAnimate] = useState(false)
 
+  const soundCardRevealed = useAudio([
+    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/click.mp3`,
+  ])
+  const soundCardMatch = useAudio([
+    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/answer-correct.mp3`,
+  ])
+  const soundCardMismatch = useAudio([
+    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/answer-error.mp3`,
+  ])
+  const soundVictory = useAudio([
+    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/gong.mp3`,
+  ])
+
   const { t } = useTranslation()
 
   const status = useSelector(GameSelectors.status)
 
   const errors = useSelector(GameSelectors.errors)
   const revealed = useSelector(GameSelectors.revealed)
+  const found = useSelector(GameSelectors.found)
 
   useAudioEffect([`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/game.mp3`], {
     category: AudioCategories.MUSIC,
@@ -55,16 +70,24 @@ export const GamePlaying = ({
 
   useEffect(() => {
     if (errors > 0) {
+      soundCardMismatch.stop()
+      soundCardMismatch.play()
       setTimeout(() => dispatch(GameSlice.actions.unrevealCards()), 1000)
     }
   }, [errors])
 
   useEffect(() => {
+    if (found > 0) {
+      soundCardMatch.stop()
+      soundCardMatch.play()
+    }
     dispatch(GameSlice.actions.unrevealCards())
-  }, [revealed])
+  }, [found])
 
   useEffect(() => {
     if (status === GameStatuses.GAME_ENDED_VICTORY) {
+      soundVictory.stop()
+      soundVictory.play()
       setAnimate(true)
       victoryTimeout = setTimeout(() => {
         handleVictoryMenu()
@@ -75,10 +98,7 @@ export const GamePlaying = ({
     }
   }, [status])
 
-  const [reveal, setReveal] = useState(false)
-
   const theme = useSelector(GameSelectors.theme)
-  const size = useSelector(GameSelectors.size)
 
   const themeObj = useWardProvider(theme)
 
@@ -92,6 +112,22 @@ export const GamePlaying = ({
 
   const handleGameStart = () => {
     dispatch(GameSlice.actions.gameStart())
+  }
+
+  const handleTileClick = (tileId: string) => {
+    switch (status) {
+      case GameStatuses.GAME_READY: {
+        handleGameStart()
+      }
+      case GameStatuses.GAME_ON_GOING: {
+        if (revealed < 2) {
+          soundCardRevealed.stop()
+          soundCardRevealed.play()
+          dispatch(GameSlice.actions.revealCard({ tileId }))
+        }
+        break
+      }
+    }
   }
 
   const handleEndMenu = () => {
@@ -157,7 +193,9 @@ export const GamePlaying = ({
     <GameLayout
       header={`Memory - ${themeObj ? themeObj.attributes.name : 'Random'}`}
       content={
-        <Board />
+        <Board
+          onTileClick={handleTileClick}
+        />
       }
       footer={renderFooter()}
     />

@@ -7,6 +7,7 @@ export const startTime = (state: RootState) => base(state).startTime
 export const endTime = (state: RootState) => base(state).endTime
 export const errors = (state: RootState) => base(state).errors
 export const revealed = (state: RootState) => base(state).revealed
+export const found = (state: RootState) => base(state).found
 export const size = (state: RootState) => base(state).size
 export const theme = (state: RootState) => base(state).theme
 export const themeSelected = (state: RootState) => base(state).themeSelected
@@ -31,6 +32,7 @@ const GameSelectors = {
   endTime,
   errors,
   revealed,
+  found,
 
   dialog,
   dialogParams,

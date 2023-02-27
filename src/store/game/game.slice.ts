@@ -32,6 +32,7 @@ const initialState: GameState = {
 
   errors: 0,
   revealed: 0,
+  found: 0,
 
   board: { tiles: [] },
   tiles: {},
@@ -95,14 +96,15 @@ const revealCard: CaseReducer<GameState, PayloadAction<RevealCardPayload>> = (st
   const revealedTiles = Object.values(state.tiles).filter(tile => tile.revealed && !tile.found)
   if (!tile.found && !tile.revealed && revealedTiles.length < 2) {
     tile.revealed = true
+    state.revealed++
     if (revealedTiles.length === 1) {
       if (revealedTiles[0].src === tile.src) {
         revealedTiles[0].found = true
         revealedTiles[0].revealed = false
         tile.found = true
         tile.revealed = false
-        state.revealed++
-        if (state.revealed === state.board.tiles.length / 2) {
+        state.found++
+        if (state.found === state.board.tiles.length / 2) {
           state.status = GameStatuses.GAME_ENDED_VICTORY
           state.endTime = new Date().getTime()
         }
@@ -119,6 +121,7 @@ const unrevealCards: CaseReducer<GameState, PayloadAction<void>> = (state, actio
       tile.revealed = false
     }
   })
+  state.revealed = 0
 }
 
 const gameEnd: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {

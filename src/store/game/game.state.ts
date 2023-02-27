@@ -14,6 +14,7 @@ export interface GameState {
 
   errors: number
   revealed: number
+  found: number
 
   board: GameBoardState
   tiles: GameBoardTilesState

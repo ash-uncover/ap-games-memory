@@ -1,24 +1,24 @@
 import React from 'react'
 // Hooks
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 // Store
 import GameSelectors from 'store/game/game.selectors'
-import GameSlice from 'store/game/game.slice'
+// Libs
+import { useThemeCardBack } from 'lib/game/board/theme.helper'
 // Styles
 import './BoardTile.css'
-import { useTheme, useThemeCardBack } from 'lib/game/board/theme.helper'
 
 interface BoardTileProperties {
   tileId: string
+  onClick: () => void
 }
 
 const BoardTile = ({
-  tileId
+  tileId,
+  onClick
 }: BoardTileProperties) => {
 
   // Hooks //
-
-  const dispatch = useDispatch()
 
   const tile = useSelector(GameSelectors.tile(tileId))
   const cardBack = useThemeCardBack()
@@ -26,7 +26,9 @@ const BoardTile = ({
   // Events //
 
   const handleTileClick = () => {
-    dispatch(GameSlice.actions.revealCard({ tileId }))
+    if (!tile.revealed && !tile.found) {
+      onClick()
+    }
   }
 
   // Rendering //

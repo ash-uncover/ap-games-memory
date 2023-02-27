@@ -2,7 +2,9 @@
   "LOADING": "Loading...",
   "BACK": "Back",
   "CLOSE": "Close",
-
+  "app": {
+    "start": "Press any key"
+  },
   "home": {
     "menu": "Home",
     "title": "Home",
@@ -10,7 +12,8 @@
       "menu": "Play",
       "title": "New Game",
       "size": {
-        "title": "Board Size"
+        "title": "Board Size",
+        "text": "{{number}} cards"
       },
       "start": {
         "text": "Start",
@@ -79,10 +82,6 @@
       "text": "Start",
       "tooltip": "Start Game"
     },
-    "next": {
-      "text": "Next Image",
-      "tooltip": "Sélect next image"
-    },
     "previous": {
       "text": "Previous Image",
       "tooltip": "Sélect previous image"
@@ -91,13 +90,14 @@
       "defeat": {
         "title": "Menu",
         "replay": "Restart",
-        "quit": "Main Menu"
+        "quit": "Main Menu",
+        "continue": "Continue"
       },
       "victory": {
         "title": "Level Cmpleted",
         "replay": "Replay",
-        "next": "Next Level",
-        "quit": "Main Menu"
+        "quit": "Main Menu",
+        "continue": "Continue"
       }
     }
   }
