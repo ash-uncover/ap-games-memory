@@ -28,7 +28,7 @@ export const ThemeTiles = ({
   const themeSelected = useSelector(GameSelectors.themeSelected)
 
   useEffect(() => {
-    if (!theme) {
+    if (!themeSelected) {
       handleThemeSelected()
     }
   }, [])

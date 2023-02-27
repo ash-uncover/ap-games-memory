@@ -97,12 +97,6 @@ export const GamePlaying = ({
 
   const themeObj = useWardProvider(theme)
 
-  useAudioEffect(audios, {
-    category: AudioCategories.MUSIC,
-    shufffle: true,
-    loop: true
-  })
-
   // Events //
 
   const handleGameStart = () => {
@@ -187,7 +181,7 @@ export const GamePlaying = ({
   return (
     <>
       {status === GameStatuses.GAME_ON_GOING ?
-        <GamePlayingAudio />
+        <GamePlayingAudio audios={audios} />
         : null}
       <GameLayout
         header={`Memory - ${themeObj ? themeObj.attributes.name : 'Random'}`}

@@ -41,15 +41,10 @@ const AppLoading = ({
   const themes = useWardProviders('mozaic/theme')
 
   const audios = [
+    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/answer-correct.mp3`,
+    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/answer-error.mp3`,
     `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/click.mp3`,
-    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/gong.mp3`,
-    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/music_0.mp3`,
-    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/music_0.mp3`,
-    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/music_1.mp3`,
-    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/music_2.mp3`,
-    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/music_3.mp3`,
-    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/music_4.mp3`,
-    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/music_5.mp3`
+    `${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/gong.mp3`
   ]
 
   const images = themes.map((theme: any) => {

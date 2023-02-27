@@ -39,7 +39,7 @@ export const HomeContentPlay = ({
   const sizes = Object.values(GameSizes).map(size => {
     return {
       id: size.id,
-      text: `${size.width * size.height / 2} Cards`
+      text: t('home.play.size.text', { number: size.width * size.height})
     }
   })
 
