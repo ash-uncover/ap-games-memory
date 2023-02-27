@@ -25,6 +25,7 @@ import {
   DIALOG
 } from './dialogs/Dialogs'
 import Board from './board/Board'
+import GamePlayingAudio from './GamePlayingAudio'
 
 let victoryTimeout
 
@@ -62,11 +63,13 @@ export const GamePlaying = ({
   const revealed = useSelector(GameSelectors.revealed)
   const found = useSelector(GameSelectors.found)
 
-  useAudioEffect([`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/game.mp3`], {
-    category: AudioCategories.MUSIC,
-    shufffle: true,
-    loop: true
-  })
+  useEffect(() => {
+    if (found > 0) {
+      soundCardMatch.stop()
+      soundCardMatch.play()
+    }
+    dispatch(GameSlice.actions.unrevealCards())
+  }, [found])
 
   useEffect(() => {
     if (errors > 0) {
@@ -75,14 +78,6 @@ export const GamePlaying = ({
       setTimeout(() => dispatch(GameSlice.actions.unrevealCards()), 1000)
     }
   }, [errors])
-
-  useEffect(() => {
-    if (found > 0) {
-      soundCardMatch.stop()
-      soundCardMatch.play()
-    }
-    dispatch(GameSlice.actions.unrevealCards())
-  }, [found])
 
   useEffect(() => {
     if (status === GameStatuses.GAME_ENDED_VICTORY) {
@@ -190,14 +185,19 @@ export const GamePlaying = ({
   }
 
   return (
-    <GameLayout
-      header={`Memory - ${themeObj ? themeObj.attributes.name : 'Random'}`}
-      content={
-        <Board
-          onTileClick={handleTileClick}
-        />
-      }
-      footer={renderFooter()}
-    />
+    <>
+      {status === GameStatuses.GAME_ON_GOING ?
+        <GamePlayingAudio />
+        : null}
+      <GameLayout
+        header={`Memory - ${themeObj ? themeObj.attributes.name : 'Random'}`}
+        content={
+          <Board
+            onTileClick={handleTileClick}
+          />
+        }
+        footer={renderFooter()}
+      />
+    </>
   )
 }

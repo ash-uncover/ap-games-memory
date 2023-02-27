@@ -119,10 +119,24 @@
           "card38": "/theme/card38.png",
           "card39": "/theme/card39.png",
           "music": [
-            "/music_0.mp3",
-            "/music_1.mp3",
-            "/music_2.mp3",
-            "/music_3.mp3"
+            "/theme/music_0.mp3",
+            "/theme/music_1.mp3",
+            "/theme/music_2.mp3",
+            "/theme/music_3.mp3",
+            "/theme/music_4.mp3",
+            "/theme/music_5.mp3",
+            "/theme/music_6.mp3",
+            "/theme/music_7.mp3",
+            "/theme/music_8.mp3",
+            "/theme/music_9.mp3",
+            "/theme/music_10.mp3",
+            "/theme/music_11.mp3",
+            "/theme/music_12.mp3",
+            "/theme/music_13.mp3",
+            "/theme/music_14.mp3",
+            "/theme/music_15.mp3",
+            "/theme/music_16.mp3",
+            "/theme/music_17.mp3",
           ]
         }
       }
