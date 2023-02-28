@@ -22,6 +22,13 @@ export const useThemeCardBack = () => {
   return theme.attributes.cardBack
 }
 
+export const getThemeColors = (theme) => {
+  let result = ['#FFE4C4']
+  if (theme.attributes.colors && theme.attributes.colors.length) {
+    result = theme.attributes.colors
+  }
+  return result
+}
 
 export const getThemeCards = (theme) => {
   let cards = [

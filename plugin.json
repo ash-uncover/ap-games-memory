@@ -51,7 +51,8 @@
         "card37": "url",
         "card38": "url",
         "card39": "url",
-        "music?": "url[]"
+        "music?": "url[]",
+        "colors?": "string[]"
       }
     }
   },
@@ -137,6 +138,28 @@
             "/theme/music_15.mp3",
             "/theme/music_16.mp3",
             "/theme/music_17.mp3"
+          ],
+          "colors": [
+            "#F5F7E9",
+            "#B7B398",
+            "#D0AF8E",
+            "#FDF0A1",
+            "#FFEB54",
+            "#FBAF4F",
+            "#BFF6CE",
+            "#66B888",
+            "#A3D83F",
+            "#B1F4FA",
+            "#71B6F7",
+            "#DCB3F7",
+            "#9479C0",
+            "#FBADC7",
+            "#F18B74",
+            "#EE6668",
+            "#C93335",
+            "#AC7A3D",
+            "#744436",
+            "#39383D"
           ]
         }
       }

@@ -11,16 +11,12 @@ import CONFIG from 'config'
 import { GameStatuses } from 'lib/game/constants'
 import {
   AudioCategories,
+  GameFooterAction,
+  GameLayout,
   useAudio,
   useAudioEffect
 } from '@uncover/games-common'
 // Components
-import {
-  GameLayout
-} from 'components/common/game/GameLayout'
-import {
-  GameFooterAction
-} from 'components/common/game/GameFooterAction'
 import {
   DIALOG
 } from './dialogs/Dialogs'

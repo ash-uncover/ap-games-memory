@@ -51,6 +51,9 @@ const BoardTile = ({
     >
       <img
         className='board-tile__image'
+        style={{
+          backgroundColor: tile.color
+        }}
         draggable={false}
         width='101%'
         height='101%'

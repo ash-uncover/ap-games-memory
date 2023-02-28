@@ -16,7 +16,7 @@ import {
 
 import Ward from '@uncover/ward'
 import { ArrayUtils, UUID } from '@uncover/js-utils'
-import { getThemeCards } from 'lib/game/board/theme.helper'
+import { getThemeCards, getThemeColors } from 'lib/game/board/theme.helper'
 
 // STATE //
 
@@ -63,15 +63,19 @@ const gameLaunch: CaseReducer<GameState, PayloadAction<void>> = (state, action) 
 const gameReady: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
   const theme = Ward.data.providers[state.theme]
   const allCards = getThemeCards(theme)
+  const allColors = getThemeColors(theme)
   const nbCards = state.size.width * state.size.height / 2
-  const baseCards = ArrayUtils.randomSubArray(allCards, nbCards)
+  const baseCards = ArrayUtils.randomSubArray(allCards, nbCards).map((cardUrl) => ({
+    src: cardUrl,
+    color: ArrayUtils.randomElement(allColors)
+  }))
   const chosenCards = ArrayUtils.shuffle([...baseCards, ...baseCards])
 
-  chosenCards.forEach((card: string) => {
+  chosenCards.forEach((card: { src: string, color: string }) => {
     const tile = {
       id: `tile-${UUID.next()}`,
-      src: card,
-      color: '#888',
+      src: card.src,
+      color: card.color,
       revealed: false,
       found: false
     }
